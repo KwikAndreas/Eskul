@@ -1,6 +1,3 @@
-Berikut adalah kode Markdown mentah yang dapat langsung Anda salin dan tempel ke file `README.md` Anda:
-
-````markdown
 # 🚀 Eskul Coding - SMPK Anugerah
 
 Repositori ini berisi materi pembelajaran, tugas, dan dokumentasi perbaikan untuk Ekstrakurikuler Coding di SMPK Anugerah periode awal 2026. Fokus utama pembelajaran adalah pengembangan web dasar (**HTML**, **CSS**) dan pengenalan **JavaScript**.
@@ -224,4 +221,3 @@ Benefit: Reusable, testable, maintainable.
 
 _Dikelola oleh Kwik Andreas Jonathan._
 _Last Updated: April 2026_
-````
