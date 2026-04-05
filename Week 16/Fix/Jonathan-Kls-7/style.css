@@ -1,0 +1,150 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #667eea;
+}
+
+.judul-utama {
+  color: #2d3748;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subjudul {
+  color: #718096;
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+/* Sections */
+.section {
+  background-color: #f7fafc;
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 15px;
+  border-left: 5px solid #667eea;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Section Titles */
+.section h2 {
+  color: #2d3748;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Paragraphs */
+.section p {
+  color: #4a5568;
+  font-size: 1.05em;
+  margin-bottom: 10px;
+}
+
+/* Lists */
+.section ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.section li {
+  color: #2d3748;
+  padding: 10px 15px;
+  margin: 8px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  border-left: 3px solid #48bb78;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.section li:hover {
+  background-color: #f0fff4;
+  transform: translateX(5px);
+}
+
+/* Section-specific colors */
+.bio {
+  border-left-color: #667eea;
+}
+
+.hobi {
+  border-left-color: #48bb78;
+}
+
+.cita-cita {
+  border-left-color: #ed8936;
+}
+
+.liburan {
+  border-left-color: #f56565;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  text-align: center;
+}
+
+footer p {
+  color: #718096;
+  font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .judul-utama {
+    font-size: 1.8em;
+  }
+
+  .section {
+    padding: 15px;
+  }
+
+  .section h2 {
+    font-size: 1.3em;
+  }
+}

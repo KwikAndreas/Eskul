@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang Belanja - Toko Gadget Pro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-content">
+            <a href="index.html" class="logo">
+              <span class="logo-icon">⚡</span>
+              <span class="logo-text">Toko Gadget Pro</span>
+            </a>
+            <div class="nav-right">
+              <a href="index.html" class="nav-link">← Kembali ke Toko</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container cart-container">
+      <h1>🛒 Keranjang Belanja Anda</h1>
+
+      <div class="cart-content">
+        <!-- Cart Items -->
+        <div class="cart-items-section">
+          <div class="cart-items" id="cartItems">
+            <!-- Cart items will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <aside class="cart-summary">
+          <div class="summary-card">
+            <h3>Ringkasan Pesanan</h3>
+
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <span id="subtotal">Rp 0</span>
+            </div>
+
+            <div class="summary-line">
+              <span>Biaya Pengiriman</span>
+              <span id="shipping">Rp 0</span>
+            </div>
+
+            <div class="summary-line">
+              <span>Pajak (10%)</span>
+              <span id="tax">Rp 0</span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-total">
+              <span>Total</span>
+              <span id="total" class="total-amount">Rp 0</span>
+            </div>
+
+            <button class="btn btn-primary btn-checkout" id="checkoutBtn">
+              Lanjut ke Pembayaran
+            </button>
+
+            <a href="index.html" class="btn btn-secondary"> Lanjut Belanja </a>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Empty Cart Message -->
+      <div class="empty-cart hidden" id="emptyCart">
+        <p class="empty-message">Keranjang Anda masih kosong</p>
+        <a href="index.html" class="btn btn-primary">Mulai Belanja</a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Toko Gadget Pro. Semua hak cipta dilindungi.</p>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="cart.js"></script>
+  </body>
+</html>

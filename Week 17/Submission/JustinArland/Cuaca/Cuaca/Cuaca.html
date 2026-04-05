@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Input Nama</title>
+ <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+ <h2 class="Judul">Masukkan Kondisi Cuaca</h2>
+ <input class="Input" id="cuacaInput" type="text" placeholder="Contoh: Hujan" />
+ <button onclick="Saran()">Cek</button>
+ <p id="hasil"></p>
+ <script>
+ function Saran() {
+let cuaca = document.getElementById("cuacaInput").value.toLowerCase();
+let display = document.getElementById("hasil");
+ if (cuaca === "hujan") {
+document.getElementById("hasil").textContent ="saran: bawa payung";
+}
+ else if (cuaca === "panas") {
+document.getElementById("hasil").textContent
+="saran: jangan lupa minum";
+}
+ else if (cuaca === "mendung") {
+document.getElementById("hasil").textContent
+="Saran: Siap-siap pakai Jas Hujan "
+ }
+ else {
+display.textContent
+="Maaf Cuaca Tidak Dikenail🙏"
+ }
+ }
+ </script>
+ </body>
+</html>

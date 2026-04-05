@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Toko Online</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="Judul">Toko Online Mas Rusdi</h1>
+    <p class="Deskripsi">Dijamin Murah</p>
+    <div class="produk">
+      <div class="card">
+        <img src="IMG/OPPO.png" alt="OPPO" width="200" class="img-kesatu" />
+        <h3>HP OPPO</h3>
+        <p class="Deskripsi-1">
+          HP GG Gimang dengan penyimpanan internal 1000 TB juga ram 100 triliun
+          GB. Aman untuk main flappy bird 100 triliun FPS.
+        </p>
+        <div class="price">2.500.000</div>
+        <button onclick="TambahKeKeranjang(1, 'HP OPPO', 2500000)">
+          Tambah
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="IMG/KIPAS.png"
+          alt="Kipas Angin"
+          width="200"
+          class="img-kesatu"
+        />
+        <h3>Kipas Angin</h3>
+        <p>
+          Kipas Angin yang dapat menerbangkan rumah bahkan gedung pencakar
+          langin dalam waktu 5 milidetik.
+        </p>
+        <div class="price">300.000</div>
+        <button onclick="TambahKeKeranjang(2, 'Kipas Angin', 300000)">
+          Tambah
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="IMG/LEGO.png"
+          alt="Lego Bumi"
+          width="200"
+          class="img-kesatu"
+        />
+        <h3>Lego Bumi</h3>
+        <p>
+          Lego berbentuk bumi dengan ukuran 1:1. Dalam kardus terdapat
+          50^10000000000000000 bagian lego. kamu hanya perlu membuatnya dalam
+          100 juta abad.
+        </p>
+        <div class="price">10.000.000</div>
+        <button onclick="TambahKeKeranjang(3, 'Lego Bumi', 10000000)">
+          Tambah
+        </button>
+      </div>
+      <div class="cart-container">
+        <h2>🛒 Detail Pesanan</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nama Barang</th>
+              <th>Harga Satuan</th>
+              <th>Jumlah</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="tabel-keranjang"></tbody>
+        </table>
+
+        <div class="total-section">
+          Total Belanja: <span id="total-harga">Rp 0</span>
+        </div>
+        <button class="btn-clear" onclick="kosongkanKeranjang()">
+          Kosongkan Keranjang
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let keranjang = [];
+
+      function TambahKeKeranjang(id, nama, harga) {
+        const itemAda = keranjang.find((item) => item.id === id);
+
+        if (itemAda) {
+          itemAda.jumlah += 1;
+        } else {
+          keranjang.push({
+            id: id,
+            nama: nama,
+            harga: harga,
+            jumlah: 1,
+          });
+        }
+        renderKeranjang();
+      }
+
+      function renderKeranjang() {
+        const tabel = document.getElementById("tabel-keranjang");
+        const totalLabel = document.getElementById("total-harga");
+        let totalBelanja = 0;
+
+        tabel.innerHTML = "";
+
+        if (keranjang.length === 0) {
+          tabel.innerHTML =
+            '<tr><td colspan="4" style="text-align:center; color:gray;">Belum ada barang dipilih.</td></tr>';
+        } else {
+          keranjang.forEach((item) => {
+            const subtotal = item.harga * item.jumlah;
+            totalBelanja += subtotal;
+
+            tabel.innerHTML += `
+                    <tr>
+                        <td>${item.nama}</td>
+                        <td>Rp ${item.harga.toLocaleString("id-ID")}</td>
+                        <td><strong>${item.jumlah}x</strong></td>
+                        <td>Rp ${subtotal.toLocaleString("id-ID")}</td>
+                    </tr>
+                `;
+          });
+        }
+
+        totalLabel.innerText = `Rp ${totalBelanja.toLocaleString("id-ID")}`;
+      }
+
+      function kosongkanKeranjang() {
+        keranjang = [];
+        renderKeranjang();
+      }
+    </script>
+  </body>
+</html>

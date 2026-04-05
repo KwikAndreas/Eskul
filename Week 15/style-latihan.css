@@ -1,0 +1,115 @@
+/* ============================================
+   TEMPLATE CSS UNTUK LATIHAN WEEK 15
+   Lengkapi bagian yang kosong!
+   ============================================ */
+
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #f5f5f5;
+}
+
+/* ========== HEADER ========== */
+.header-utama {
+  /* TODO: Pilih warna favorit kamu (contoh: #3498db, #e74c3c, #2ecc71) */
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.judul-utama {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subjudul {
+  font-size: 16px;
+  /* Tambahkan styling lain jika mau */
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ========== SECTIONS ========== */
+section {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-radius: 8px;
+  /* Tambahkan box-shadow agar ada bayangan */
+}
+
+.judul-section {
+  /* TODO: Warna yang sama dengan header atau berbeda */
+  color: #3498db;
+  font-size: 24px;
+  margin-bottom: 15px;
+  /* TODO: Coba tambahkan border-bottom: 2px solid #3498db; */
+}
+
+.paragraf {
+  font-size: 16px;
+  margin-bottom: 10px;
+  /* Tambahkan styling lain */
+}
+
+/* ========== LIST ========== */
+.daftar-hobi {
+  list-style: none;
+  padding-left: 0;
+}
+
+.item-hobi {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #f8f9fa;
+  /* TODO: Ubah warna border sesuai favorit kamu */
+  border-left: 4px solid #3498db;
+  border-radius: 4px;
+}
+
+/* BONUS: Tambahkan hover effect! */
+.item-hobi:hover {
+  /* TODO: Apa yang terjadi saat mouse di atas item? */
+  /* Contoh: background-color: #e9ecef; atau transform: translateX(5px); */
+  background-color: #e9ecef;
+  transform: translateX(5px);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.teks-footer {
+  font-size: 14px;
+}
+
+/* ========== RESPONSIVE (BONUS) ========== */
+/* Opsional: Buat responsive untuk HP */
+@media (max-width: 768px) {
+  .judul-utama {
+    font-size: 28px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+}

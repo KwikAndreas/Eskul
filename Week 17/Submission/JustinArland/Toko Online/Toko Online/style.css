@@ -1,0 +1,44 @@
+.Judul {
+margin-bottom: 0;
+}
+
+.Deskripsi {
+margin-top: 2px;
+}
+
+
+.card {
+background: grey; padding: 20px; border-radius: 12px; 
+box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center;
+}
+
+.img-kesatu {
+display: block;
+border-radius: 10px;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+transition: transform 0.5s ease;
+}
+
+.img-kesatu:hover {
+transform : rotate(1deg) scale(1.05);
+}
+
+.Deskripsi-1 {
+margin-top: 2px;
+}
+
+.price {
+font-weight: bold;
+font-size: 20px;
+margin: 10px 0;
+color: #FFC312;
+}
+
+button {
+color: blue;
+font-weight: bold;
+font-size: 20px;
+border-radius: 6px;
+}

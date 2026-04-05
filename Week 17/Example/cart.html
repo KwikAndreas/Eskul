@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang Belanja - Toko Gadget</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: #333;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      nav {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 16px 24px;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 24px;
+      }
+
+      .header {
+        background: white;
+        padding: 24px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .header h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .header p {
+        color: #666;
+        font-size: 14px;
+      }
+
+      /* Cart Items */
+      .cart-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 24px;
+      }
+
+      .cart-items {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .cart-item {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 16px;
+        transition: background 0.2s ease;
+      }
+
+      .cart-item:hover {
+        background: #f9f9f9;
+      }
+
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+
+      .item-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #f5f5f5;
+      }
+
+      .item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .item-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .item-name {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .item-price {
+        color: #667eea;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .item-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+      }
+
+      .qty-btn {
+        width: 28px;
+        height: 28px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #667eea;
+        transition: all 0.2s ease;
+      }
+
+      .qty-btn:hover {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+      }
+
+      .qty-display {
+        min-width: 30px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .remove-btn {
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-left: auto;
+      }
+
+      .remove-btn:hover {
+        background: #ff5252;
+      }
+
+      /* Cart Summary */
+      .cart-summary {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        height: fit-content;
+        position: sticky;
+        top: 24px;
+      }
+
+      .summary-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .summary-row.total {
+        border-top: 2px solid #e0e0e0;
+        padding-top: 12px;
+        margin-top: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .summary-row.total .amount {
+        color: #667eea;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 16px;
+      }
+
+      .checkout-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+      }
+
+      .checkout-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Empty State */
+      .empty-state {
+        text-align: center;
+        padding: 60px 24px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .empty-state h2 {
+        color: #999;
+        margin-bottom: 12px;
+        font-size: 20px;
+      }
+
+      .empty-state p {
+        color: #ccc;
+        margin-bottom: 24px;
+      }
+
+      .empty-state a {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .empty-state a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .cart-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .cart-summary {
+          position: static;
+        }
+
+        .header h1 {
+          font-size: 22px;
+        }
+
+        .cart-item {
+          grid-template-columns: 60px 1fr;
+        }
+
+        .item-image {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html">← Belanja Lagi</a>
+    </nav>
+
+    <div class="container">
+      <div class="header">
+        <h1>🛒 Keranjang Belanja</h1>
+        <p id="cartInfo">Anda memiliki produk di keranjang</p>
+      </div>
+
+      <div class="cart-wrapper">
+        <div class="cart-items" id="cart"></div>
+
+        <div class="cart-summary">
+          <div class="summary-title">Ringkasan Pesanan</div>
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">Rp 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Pajak (10%):</span>
+            <span id="tax">Rp 0</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span class="amount" id="total">Rp 0</span>
+          </div>
+          <button class="checkout-btn" onclick="checkout()">
+            ✓ Lanjut Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      function formatRupiah(angka) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(angka);
+      }
+
+      function render() {
+        const container = document.getElementById("cart");
+        container.innerHTML = "";
+
+        if (cart.length === 0) {
+          container.innerHTML = `
+          <div class="empty-state">
+            <h2>Keranjang Kosong</h2>
+            <p>Tidak ada produk di keranjang Anda</p>
+            <a href="index.html">← Kembali Belanja</a>
+          </div>
+        `;
+          document.getElementById("cartInfo").textContent =
+            "Keranjang Anda kosong";
+          return;
+        }
+
+        document.getElementById("cartInfo").textContent =
+          `Anda memiliki ${cart.length} produk di keranjang`;
+
+        cart.forEach((item, index) => {
+          const itemEl = document.createElement("div");
+          itemEl.className = "cart-item";
+
+          itemEl.innerHTML = `
+          <div class="item-image">
+            <img src="${item.image}" alt="${item.name}" loading="lazy">
+          </div>
+          <div class="item-details">
+            <div>
+              <div class="item-name">${item.name}</div>
+              <div class="item-price">${formatRupiah(item.price)}</div>
+            </div>
+            <div class="item-controls">
+              <button class="qty-btn" onclick="kurang(${index})">−</button>
+              <span class="qty-display">${item.qty}</span>
+              <button class="qty-btn" onclick="tambah(${index})">+</button>
+              <button class="remove-btn" onclick="hapus(${index})">Hapus</button>
+            </div>
+          </div>
+        `;
+
+          container.appendChild(itemEl);
+        });
+
+        updateSummary();
+      }
+
+      function updateSummary() {
+        let subtotal = 0;
+        cart.forEach((item) => {
+          subtotal += item.price * (item.qty || 1);
+        });
+
+        const tax = Math.round(subtotal * 0.1);
+        const total = subtotal + tax;
+
+        document.getElementById("subtotal").textContent =
+          formatRupiah(subtotal);
+        document.getElementById("tax").textContent = formatRupiah(tax);
+        document.getElementById("total").textContent = formatRupiah(total);
+      }
+
+      function tambah(index) {
+        cart[index].qty++;
+        update();
+      }
+
+      function kurang(index) {
+        if (cart[index].qty > 1) {
+          cart[index].qty--;
+        }
+        update();
+      }
+
+      function hapus(index) {
+        cart.splice(index, 1);
+        update();
+      }
+
+      function update() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+        render();
+      }
+
+      function checkout() {
+        if (cart.length === 0) {
+          alert("Keranjang kosong!");
+          return;
+        }
+        alert("Terima kasih! Pesanan Anda akan diproses.");
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+        render();
+      }
+
+      render();
+    </script>
+  </body>
+</html>

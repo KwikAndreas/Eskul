@@ -1,0 +1,93 @@
+.Judul-Website {
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+margin-bottom: 20px;
+color: white;
+padding: 10px;
+background-color: #007BFF;
+}
+
+.Subjudul-Pertama {
+max-width: 800px;
+margin: 0 auto;
+margin-bottom: 15px;
+text-align: left;
+color: green;
+padding: 5px;
+background-color: #FFD700;
+}
+
+.Diri-Saya {
+max-width: 800px;
+margin: 0 auto;
+padding: 10px;
+margin-bottom: 15px;
+background-color: #FFC0CB ;
+font-family: sans-serif; 
+font-size: 16px; 
+font-weight: bold; 
+text-align: center; 
+line-height: 1.5; 
+text-decoration: none; 
+
+}
+
+.Subjudul-Kedua {
+max-width: 800px;
+margin: 0 auto;
+color: white;
+padding: 5px;
+background-color: #FF0000;
+}
+
+.Game {
+font-weight: bold;
+}
+
+.Paragraf-Game {
+font-weight: bold;
+font-family: sans-serif; 
+}
+
+.Menulis-Cerita {
+font-weight: bold;
+}
+
+.Paragraf-Cerita {
+font-weight: bold;
+}
+
+.Memasak {
+font-weight: bold;
+}
+
+.Paragraf-Memasak {
+font-weight: bold;
+}
+
+.Subjudul-Ketiga {
+max-width: 800px;
+margin: 0 auto;
+margin-bottom: 15px;
+padding: 5px;
+background-color: #FFD700;
+}
+
+.Cita-Cita {
+font-weight: bold;
+}
+
+.Subjudul-Keempat {
+max-width: 800px;
+margin: 0 auto;
+margin-bottom: 15px;
+padding: 5px;
+background-color: #8B4513;
+
+}
+
+.Paragraf-Liburan {
+font-weight: bold;
+}
+

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Gadget - Belanja Elektronik Pilihan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Navigation */
+    nav {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Header Section */
+    .header {
+      background: white;
+      padding: 40px 24px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: #667eea;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    /* Product Card */
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      background: #f5f5f5;
+      aspect-ratio: 1 / 1;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ff6b6b;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      display: none;
+    }
+
+    .card-badge.stok-habis {
+      display: block;
+      background: #868e96;
+    }
+
+    .card-content {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #667eea;
+    }
+
+    .card-btn {
+      flex: 1;
+      padding: 8px 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .card-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .card-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .empty-state h2 {
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+      }
+
+      nav {
+        padding: 12px 16px;
+      }
+
+      nav .logo {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">🛍️ Toko Gadget</div>
+    <a href="cart.html">
+      🛒 Keranjang <span id="cartCount"></span>
+    </a>
+  </nav>
+
+  <div class="header">
+    <h1>Koleksi Gadget Terpercaya</h1>
+    <p>Produk pilihan dengan kualitas terbaik dan harga kompetitif</p>
+  </div>
+
+  <div class="container">
+    <div class="product-grid" id="productList"></div>
+  </div>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "Tas Canvas Multifungsi",
+        price: 85000,
+        stock: 10,
+        desc: "Tas yang ringan, tahan lama, dan cocok untuk sekolah maupun traveling",
+        image: "https://dynamic.zacdn.com/MWtmmQQuHO9HBbzE4E5nZq-A36c=/filters:quality(70):format(webp)/https://static-id.zacdn.com/p/pamole-1345-5967892-1.jpg",
+      },
+      {
+        id: 2,
+        name: "Botol Minum Thermos",
+        price: 125000,
+        stock: 0,
+        desc: "Menjaga minuman tetap dingin atau hangat hingga 24 jam",
+        image: "https://dynamic.zacdn.com/G1kA0Ce4XmHFxkubJmVXchocfLs=/filters:quality(70):format(webp)/https://static-id.zacdn.com/p/wakakids-9741-7435414-2.jpg",
+      },
+      {
+        id: 3,
+        name: "Earbuds Noise Canceling",
+        price: 450000,
+        stock: 8,
+        desc: "Audio berkualitas tinggi dengan teknologi peredam bising profesional",
+        image: "https://unitagstore.com/wp-content/uploads/2024/10/Anker-TWS-Soundcore-R50i-NC.webp",
+      },
+    ];
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((total, item) => total + (item.qty || 0), 0);
+      document.getElementById("cartCount").textContent = count > 0 ? `(${count})` : "";
+    }
+
+    const container = document.getElementById("productList");
+
+    products.forEach((p) => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const isOutOfStock = p.stock === 0;
+
+      card.innerHTML = `
+        <div class="card-image">
+          <img src="${p.image}" alt="${p.name}" loading="lazy">
+          ${isOutOfStock ? '<div class="card-badge stok-habis">Stok Habis</div>' : ""}
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">${p.name}</h3>
+          <p class="card-desc">${p.desc}</p>
+          <div class="card-footer">
+            <span class="card-price">Rp ${p.price.toLocaleString("id-ID")}</span>
+            <button 
+              class="card-btn" 
+              onclick="goToDetail(${p.id})"
+              ${isOutOfStock ? 'disabled' : ''}
+            >
+              ${isOutOfStock ? 'Habis' : 'Lihat'}
+            </button>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    function goToDetail(id) {
+      window.location.href = `detail.html?id=${id}`;
+    }
+
+    updateCartCount();
+  </script>
+</body>
+</html>
+    <p class="price">Rp ${p.price}</p>
+  `;
+
+        card.onclick = () => {
+          localStorage.setItem("detail", JSON.stringify(p));
+          window.location.href = "detail.html";
+        };
+
+        container.appendChild(card);
+      });
+    </script>
+  </body>
+</html>

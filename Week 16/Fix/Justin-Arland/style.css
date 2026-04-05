@@ -1,0 +1,396 @@
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #2d3748;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  background-position: bottom;
+  opacity: 0.3;
+}
+
+.judul-website {
+  font-size: 3em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.intro {
+  font-size: 1.2em;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   SECTIONS
+   ======================================== */
+
+.section {
+  padding: 50px 40px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #667eea;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #667eea;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #764ba2;
+}
+
+.content {
+  font-size: 1.1em;
+  color: #4a5568;
+}
+
+.content p {
+  margin-bottom: 20px;
+}
+
+/* ========================================
+   HOBI CARDS
+   ======================================== */
+
+.hobi-card {
+  background-color: #f7fafc;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hobi-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+}
+
+.hobi-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px 30px;
+}
+
+.hobi-header h3 {
+  color: white;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.hobi-content {
+  padding: 30px;
+}
+
+.hobi-img {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hobi-content p {
+  color: #4a5568;
+  line-height: 1.8;
+}
+
+/* ========================================
+   CITA-CITA SECTION
+   ======================================== */
+
+.cita-cita-content {
+  display: flex;
+  gap: 30px;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+.cita-img {
+  flex: 0 0 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.cita-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.goals-list {
+  background-color: #f7fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border-left: 4px solid #667eea;
+}
+
+.goals-list h4 {
+  color: #667eea;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+}
+
+.goals-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.goals-list li {
+  padding: 10px 15px;
+  margin: 8px 0;
+  background-color: white;
+  border-radius: 8px;
+  border-left: 3px solid #48bb78;
+  transition: all 0.2s ease;
+}
+
+.goals-list li:hover {
+  background-color: #f0fff4;
+  transform: translateX(5px);
+}
+
+.goals-list li::before {
+  content: "✓ ";
+  color: #48bb78;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* ========================================
+   LIBURAN SECTION
+   ======================================== */
+
+.liburan-content {
+  background-color: #f7fafc;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.liburan-img {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 10px 0;
+}
+
+.footer-note {
+  font-size: 0.9em;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    border-radius: 10px;
+  }
+
+  .header {
+    padding: 40px 20px;
+  }
+
+  .judul-website {
+    font-size: 2em;
+  }
+
+  .intro {
+    font-size: 1em;
+  }
+
+  .section {
+    padding: 30px 20px;
+  }
+
+  .section-title {
+    font-size: 1.5em;
+  }
+
+  .content {
+    font-size: 1em;
+  }
+
+  .hobi-header {
+    padding: 15px 20px;
+  }
+
+  .hobi-header h3 {
+    font-size: 1.3em;
+  }
+
+  .hobi-content {
+    padding: 20px;
+  }
+
+  .hobi-img,
+  .cita-img,
+  .liburan-img {
+    max-width: 100%;
+  }
+
+  .cita-cita-content {
+    flex-direction: column;
+  }
+
+  .cita-img {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .goals-list {
+    padding: 15px;
+  }
+
+  .liburan-content {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .judul-website {
+    font-size: 1.6em;
+  }
+
+  .section-title {
+    font-size: 1.3em;
+  }
+
+  .hobi-img,
+  .liburan-img {
+    height: 200px;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+strong {
+  color: #667eea;
+  font-weight: 600;
+}

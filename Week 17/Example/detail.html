@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Produk - Toko Gadget</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        color: #333;
+        min-height: 100vh;
+      }
+
+      /* Navigation */
+      nav {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 16px 24px;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        font-size: 14px;
+        color: #666;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 40px 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 24px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Left - Image */
+      .left {
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f9f9f9;
+        border-radius: 12px;
+      }
+
+      .left img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Right - Details */
+      .right {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .right h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+        color: #333;
+      }
+
+      .price {
+        font-size: 32px;
+        font-weight: 700;
+        color: #667eea;
+        margin-bottom: 8px;
+      }
+
+      .stock {
+        font-size: 14px;
+        margin-bottom: 24px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        display: inline-block;
+        width: fit-content;
+      }
+
+      .stock.tersedia {
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .stock.habis {
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      .desc-section h3 {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+        margin-top: 24px;
+      }
+
+      .desc-section p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 24px;
+      }
+
+      .qty-section {
+        margin-bottom: 24px;
+      }
+
+      .qty-section label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+      }
+
+      .qty-box {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #f5f5f5;
+        width: fit-content;
+        border-radius: 8px;
+        padding: 8px;
+      }
+
+      .qty-btn {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        color: #667eea;
+      }
+
+      .qty-btn:hover:not(:disabled) {
+        background: #667eea;
+        color: white;
+      }
+
+      .qty-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #qty {
+        min-width: 40px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .buy-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .buy-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+      }
+
+      .buy-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .success-message {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #28a745;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        z-index: 1000;
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding: 0 16px 24px 16px;
+        }
+
+        .right h1 {
+          font-size: 22px;
+        }
+
+        .price {
+          font-size: 24px;
+        }
+
+        .left img {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="index.html">← Kembali ke Toko</a>
+    </nav>
+
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <div class="container">
+      <!-- KIRI (GAMBAR) -->
+      <div class="left">
+        <img id="img" alt="Gambar Produk" />
+      </div>
+
+      <!-- KANAN (DETAIL) -->
+      <div class="right">
+        <h1 id="name"></h1>
+        <p class="price" id="price"></p>
+        <p class="stock" id="stock"></p>
+
+        <div class="desc-section">
+          <h3>Deskripsi Produk</h3>
+          <p id="desc"></p>
+        </div>
+
+        <div class="qty-section">
+          <label for="qty">Jumlah:</label>
+          <div class="qty-box">
+            <button class="qty-btn" onclick="kurang()" id="btnKurang">−</button>
+            <span id="qty">1</span>
+            <button class="qty-btn" onclick="tambah()">+</button>
+          </div>
+        </div>
+
+        <button class="buy-btn" onclick="addToCart()" id="buyBtn">
+          🛒 Tambah ke Keranjang
+        </button>
+      </div>
+    </div>
+
+    <div class="success-message" id="successMsg">
+      ✓ Produk berhasil ditambahkan ke keranjang!
+    </div>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const productId = parseInt(params.get("id")) || 1;
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+      const product = products.find((p) => p.id === productId);
+
+      let qty = 1;
+
+      function formatRupiah(angka) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(angka);
+      }
+
+      function init() {
+        if (!product) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        // Update breadcrumb
+        document.getElementById("breadcrumb").innerHTML =
+          `<span>Toko Gadget</span> > <span>${product.name}</span>`;
+
+        // Set data
+        document.getElementById("img").src = product.image;
+        document.getElementById("img").alt = product.name;
+        document.getElementById("name").textContent = product.name;
+        document.getElementById("desc").textContent = product.desc;
+        document.getElementById("price").textContent = formatRupiah(
+          product.price,
+        );
+
+        const isOutOfStock = product.stock === 0;
+        const stockEl = document.getElementById("stock");
+
+        if (isOutOfStock) {
+          stockEl.className = "stock habis";
+          stockEl.textContent = "❌ Stok Habis";
+          document.getElementById("buyBtn").disabled = true;
+          document.getElementById("btnKurang").disabled = true;
+        } else {
+          stockEl.className = "stock tersedia";
+          stockEl.textContent = `✓ Stok Tersedia (${product.stock} unit)`;
+        }
+      }
+
+      function tambah() {
+        if (qty < product.stock) {
+          qty++;
+          document.getElementById("qty").textContent = qty;
+        }
+      }
+
+      function kurang() {
+        if (qty > 1) {
+          qty--;
+          document.getElementById("qty").textContent = qty;
+        }
+      }
+
+      function addToCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const index = cart.findIndex((i) => i.id === product.id);
+
+        if (index > -1) {
+          cart[index].qty += qty;
+        } else {
+          cart.push({ ...product, qty });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Show success message
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 2000);
+
+        // Reset qty
+        qty = 1;
+        document.getElementById("qty").textContent = qty;
+      }
+
+      init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <h2>Counter Sederhana</h2>
+    <p id="angka">0</p>
+    <button onclick="tambah()">Tambah +1</button>
+    <button onclick="resetAngka()">Reset</button>
+
+    <script>
+      let nilai = 0;
+
+      function tambah() {
+        nilai = nilai + 1;
+        document.getElementById("angka").textContent = nilai;
+      }
+
+      function resetAngka() {
+        nilai = 0;
+        document.getElementById("angka").textContent = nilai;
+      }
+    </script>
+  </body>
+</html>

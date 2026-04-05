@@ -1,0 +1,36 @@
+body {
+  background-color: white;
+  font-family: Arial;
+  margin: 20px;
+}
+
+.container {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border: 2px solid black;
+}
+
+.judul {
+  color: blue;
+  text-align: center;
+  font-size: 30px;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid red;
+}
+
+.bio, .hobi, .cita, .liburan {
+  background-color: #e0e0e0;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+ul {
+  color: green;
+}
+
+li {
+  margin: 5px 0;
+}

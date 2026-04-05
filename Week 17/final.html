@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tebak Cuaca</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fb;
+        margin: 0;
+        padding: 24px;
+      }
+
+      .card {
+        max-width: 520px;
+        margin: 20px auto;
+        background: #ffffff;
+        border: 1px solid #d9e2ec;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: 28px;
+        color: #1f3c88;
+      }
+
+      p {
+        color: #34495e;
+      }
+
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 12px;
+        margin: 10px 0;
+        border: 1px solid #b6c2cf;
+        border-radius: 8px;
+        font-size: 16px;
+      }
+
+      button {
+        border: none;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 16px;
+        background-color: #1f6feb;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #1559bd;
+      }
+
+      #hasil {
+        margin-top: 16px;
+        font-weight: bold;
+        min-height: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Tebak Cuaca</h1>
+      <p>Ketik cuaca: panas, hujan, atau mendung.</p>
+
+      <input id="cuacaInput" type="text" placeholder="Contoh: hujan" />
+      <button onclick="cekCuaca()">Cek</button>
+
+      <p id="hasil"></p>
+    </div>
+
+    <script>
+      function cekCuaca() {
+        const input = document.getElementById("cuacaInput");
+        const hasil = document.getElementById("hasil");
+        const cuaca = input.value.trim().toLowerCase();
+
+        if (cuaca === "panas") {
+          hasil.textContent = "Saran: jangan lupa minum air.";
+          hasil.style.color = "#1f7a1f";
+        } else if (cuaca === "hujan") {
+          hasil.textContent = "Saran: bawa payung.";
+          hasil.style.color = "#1f3c88";
+        } else if (cuaca === "mendung") {
+          hasil.textContent = "Saran: siap-siap jas hujan.";
+          hasil.style.color = "#c26d00";
+        } else {
+          hasil.textContent = "Cuaca belum dikenali.";
+          hasil.style.color = "#a61e4d";
+        }
+      }
+    </script>
+  </body>
+</html>

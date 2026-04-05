@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator</title>
+  </head>
+  <body>
+    <h1>Kalkulator</h1>
+    <input id="angka1" type="number" placeholder="Masukkan angka pertama" />
+    <input id="angka2" type="number" placeholder="Masukkan angka kedua" />
+    <button onclick="hitung()">Hitung</button>
+    <p id="hasil"></p>
+    <script>
+      function hitung() {
+        const angka1 = parseFloat(document.getElementById("angka1").value);
+        const angka2 = parseFloat(document.getElementById("angka2").value);
+        const hasil = angka1 - angka2;
+        document.getElementById("hasil").textContent = "Hasil: " + hasil;
+      }
+    </script>
+  </body>
+</html>

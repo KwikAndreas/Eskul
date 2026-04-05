@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Gadget Pro - Belanja Elektronik Terpercaya</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="header">
+      <nav class="navbar">
+        <div class="container">
+          <div class="nav-content">
+            <div class="logo">
+              <span class="logo-icon">⚡</span>
+              <span class="logo-text">Toko Gadget Pro</span>
+            </div>
+            <div class="nav-right">
+              <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Cari produk..."
+              />
+              <a href="cart.html" class="cart-link">
+                <span class="cart-icon">🛒</span>
+                <span class="cart-count" id="cartCount">0</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Belanja Gadget Pilihan Terbaik</h1>
+        <p>Kualitas Premium, Harga Terjangkau, Garansi Resmi</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Filter & Sort -->
+      <div class="controls">
+        <div class="filter-group">
+          <label for="categoryFilter">Kategori:</label>
+          <select id="categoryFilter">
+            <option value="">Semua Kategori</option>
+            <option value="smartphone">Smartphone</option>
+            <option value="laptop">Laptop</option>
+            <option value="aksesori">Aksesori</option>
+          </select>
+        </div>
+
+        <div class="sort-group">
+          <label for="sortBy">Urutkan:</label>
+          <select id="sortBy">
+            <option value="default">Terbaru</option>
+            <option value="price-low">Harga: Rendah ke Tinggi</option>
+            <option value="price-high">Harga: Tinggi ke Rendah</option>
+            <option value="rating">Rating Tertinggi</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Products will be inserted here by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="emptyState">
+        <p>Produk tidak ditemukan</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 Toko Gadget Pro. Semua hak cipta dilindungi.</p>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,572 @@
+/* ========================================
+   RESET & BASE
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #f8f9fa;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1224 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #1a1f3a;
+  border-radius: 20px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  background-position: bottom;
+}
+
+.header-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.main-title {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  opacity: 0.95;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1;
+}
+
+.author {
+  margin-top: 20px;
+  font-size: 0.95em;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.date {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* ========================================
+   CONTENT
+   ======================================== */
+
+.content {
+  padding: 50px 40px;
+}
+
+.section-title {
+  font-size: 2em;
+  color: #667eea;
+  margin: 40px 0 25px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #667eea;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #764ba2, transparent);
+}
+
+/* ========================================
+   INTRO SECTION
+   ======================================== */
+
+.intro-section {
+  margin-bottom: 40px;
+}
+
+.lead {
+  font-size: 1.3em;
+  line-height: 1.9;
+  color: #e2e8f0;
+  padding: 30px;
+  background: rgba(102, 126, 234, 0.1);
+  border-left: 4px solid #667eea;
+  border-radius: 10px;
+}
+
+/* ========================================
+   CONTENT BOXES
+   ======================================== */
+
+.story-box,
+.content-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  margin: 25px 0;
+  border-radius: 15px;
+  border-left: 4px solid #48bb78;
+  transition: all 0.3s ease;
+}
+
+.story-box:hover,
+.content-box:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(5px);
+}
+
+.content-box.highlight {
+  background: rgba(102, 126, 234, 0.15);
+  border-left-color: #667eea;
+}
+
+.content-box.success {
+  background: rgba(72, 187, 120, 0.15);
+  border-left-color: #48bb78;
+}
+
+.content-box h3 {
+  color: #667eea;
+  font-size: 1.4em;
+  margin-bottom: 15px;
+}
+
+.content-box p {
+  color: #cbd5e0;
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+.timeline-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+}
+
+/* ========================================
+   BLOCKQUOTE
+   ======================================== */
+
+.quote {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #f6ad55;
+  padding: 20px 25px;
+  margin: 20px 0;
+  font-style: italic;
+  font-size: 1.1em;
+  color: #e2e8f0;
+  border-radius: 0 10px 10px 0;
+}
+
+.quote cite {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #a0aec0;
+}
+
+/* ========================================
+   EXAMPLES SECTION
+   ======================================== */
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.example-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.example-card:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.example-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+
+.example-card h4 {
+  color: #667eea;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+.example-card p {
+  color: #cbd5e0;
+  line-height: 1.7;
+}
+
+/* ========================================
+   COMPARISON SECTION
+   ======================================== */
+
+.comparison {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.comparison-card {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.nerf-card {
+  border: 2px solid #f56565;
+}
+
+.nerf-card:hover {
+  background: rgba(245, 101, 101, 0.1);
+  transform: scale(1.05);
+}
+
+.buff-card {
+  border: 2px solid #48bb78;
+}
+
+.buff-card:hover {
+  background: rgba(72, 187, 120, 0.1);
+  transform: scale(1.05);
+}
+
+.comparison-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.nerf-card h3 {
+  color: #f56565;
+}
+
+.buff-card h3 {
+  color: #48bb78;
+}
+
+.comparison-card p {
+  color: #cbd5e0;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.comparison-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.comparison-card li {
+  color: #e2e8f0;
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.comparison-card li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.nerf-card li::before {
+  color: #f56565;
+}
+
+.buff-card li::before {
+  color: #48bb78;
+}
+
+.vs-divider {
+  font-size: 2em;
+  font-weight: bold;
+  color: #667eea;
+  padding: 20px;
+}
+
+/* ========================================
+   FUN FACTS
+   ======================================== */
+
+.facts-list {
+  margin-top: 30px;
+}
+
+.fact-item {
+  display: flex;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 15px;
+  align-items: start;
+  transition: all 0.3s ease;
+}
+
+.fact-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateX(10px);
+}
+
+.fact-number {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.fact-content h4 {
+  color: #667eea;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.fact-content p {
+  color: #cbd5e0;
+  line-height: 1.8;
+}
+
+/* ========================================
+   CONCLUSION
+   ======================================== */
+
+.conclusion {
+  margin-top: 50px;
+}
+
+.conclusion-box {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.2),
+    rgba(118, 75, 162, 0.2)
+  );
+  padding: 40px;
+  border-radius: 15px;
+  border: 2px solid #667eea;
+}
+
+.conclusion-box h3 {
+  color: #667eea;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.conclusion-box p {
+  color: #e2e8f0;
+  font-size: 1.1em;
+  line-height: 1.9;
+  margin-bottom: 15px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+  background: linear-gradient(135deg, #0f1419 0%, #1a1f3a 100%);
+  padding: 40px;
+  text-align: center;
+  border-top: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.footer-content p {
+  color: #a0aec0;
+  margin: 10px 0;
+}
+
+.footer-content p:first-child {
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    border-radius: 10px;
+  }
+
+  .header {
+    padding: 40px 20px;
+  }
+
+  .main-title {
+    font-size: 1.8em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  .content {
+    padding: 30px 20px;
+  }
+
+  .section-title {
+    font-size: 1.5em;
+  }
+
+  .lead {
+    font-size: 1.1em;
+    padding: 20px;
+  }
+
+  .story-box,
+  .content-box {
+    padding: 20px;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison {
+    flex-direction: column;
+  }
+
+  .vs-divider {
+    transform: rotate(90deg);
+  }
+
+  .fact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .conclusion-box {
+    padding: 25px;
+  }
+
+  .footer {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 1.5em;
+  }
+
+  .section-title {
+    font-size: 1.3em;
+  }
+
+  .example-icon {
+    font-size: 2em;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-box,
+.example-card,
+.fact-item,
+.comparison-card {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+
+strong {
+  color: #667eea;
+  font-weight: 600;
+}

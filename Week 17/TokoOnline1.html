@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Toko Online Sederhana</title>
+    <style>
+      :root {
+        --bg: #f5f3ee;
+        --ink: #1f1f1f;
+        --card: #fffaf2;
+        --accent: #d67b30;
+        --accent-dark: #a7581f;
+        --line: #e2d7c8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top, #fff 0%, var(--bg) 50%);
+      }
+
+      header {
+        padding: 24px 16px;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0 0 8px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      header p {
+        margin: 0;
+        color: #5a5248;
+      }
+
+      .layout {
+        display: grid;
+        gap: 20px;
+        padding: 16px;
+        max-width: 1200px;
+        margin: 0 auto 40px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .products {
+        display: grid;
+        gap: 12px;
+      }
+
+      .product {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+
+      .product h3 {
+        margin: 0;
+      }
+
+      .product p {
+        margin: 0;
+        color: #5a5248;
+        font-size: 14px;
+      }
+
+      .price {
+        font-weight: 700;
+      }
+
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-weight: 700;
+        background: var(--accent);
+        color: #fff;
+        cursor: pointer;
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease;
+      }
+
+      button:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+      }
+
+      .cart-empty {
+        margin: 0;
+        color: #7d7367;
+        font-style: italic;
+      }
+
+      .cart-item {
+        display: grid;
+        gap: 6px;
+        padding: 12px 0;
+        border-bottom: 1px dashed var(--line);
+      }
+
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+
+      .cart-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .qty-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .qty-controls button {
+        padding: 6px 10px;
+      }
+
+      .total {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .clear-btn {
+        background: #3c3c3c;
+      }
+
+      .clear-btn:hover {
+        background: #222;
+      }
+
+      @media (max-width: 640px) {
+        header h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Toko Online Sederhana</h1>
+      <p>List produk, keranjang, kuantitas, dan total harga.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Produk</h2>
+        <div id="productList" class="products"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Keranjang</h2>
+        <div id="cartList"></div>
+        <div class="total">
+          <span>Total</span>
+          <span id="totalPrice">Rp0</span>
+        </div>
+        <div style="margin-top: 12px">
+          <button id="clearCart" class="clear-btn">Kosongkan Keranjang</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: "Tas Canvas",
+          price: 85000,
+          description: "Ringan dan muat banyak barang.",
+        },
+        {
+          id: 2,
+          name: "Botol Minum",
+          price: 45000,
+          description: "Tetap dingin hingga 6 jam.",
+        },
+        {
+          id: 3,
+          name: "Earphone",
+          price: 120000,
+          description: "Suara jernih dengan bass mantap.",
+        },
+        {
+          id: 4,
+          name: "Notebook",
+          price: 32000,
+          description: "Kertas tebal dan tidak tembus tinta.",
+        },
+      ];
+
+      const cart = new Map();
+      const productListEl = document.getElementById("productList");
+      const cartListEl = document.getElementById("cartList");
+      const totalPriceEl = document.getElementById("totalPrice");
+      const clearCartBtn = document.getElementById("clearCart");
+
+      const formatRupiah = (value) =>
+        new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(value);
+
+      const renderProducts = () => {
+        productListEl.innerHTML = "";
+        products.forEach((product) => {
+          const card = document.createElement("div");
+          card.className = "product";
+          card.innerHTML = `
+						<h3>${product.name}</h3>
+						<p>${product.description}</p>
+						<div class="cart-row">
+							<span class="price">${formatRupiah(product.price)}</span>
+							<button data-id="${product.id}">Tambah</button>
+						</div>
+					`;
+          card.querySelector("button").addEventListener("click", () => {
+            addToCart(product.id);
+          });
+          productListEl.appendChild(card);
+        });
+      };
+
+      const renderCart = () => {
+        cartListEl.innerHTML = "";
+
+        if (cart.size === 0) {
+          cartListEl.innerHTML =
+            '<p class="cart-empty">Keranjang masih kosong.</p>';
+          totalPriceEl.textContent = formatRupiah(0);
+          return;
+        }
+
+        let total = 0;
+
+        cart.forEach((qty, productId) => {
+          const product = products.find((item) => item.id === productId);
+          const subtotal = product.price * qty;
+          total += subtotal;
+
+          const item = document.createElement("div");
+          item.className = "cart-item";
+          item.innerHTML = `
+						<div class="cart-row">
+							<strong>${product.name}</strong>
+							<span>${formatRupiah(subtotal)}</span>
+						</div>
+						<div class="cart-row">
+							<span>Harga: ${formatRupiah(product.price)}</span>
+							<div class="qty-controls">
+								<button data-action="dec" data-id="${product.id}">-</button>
+								<span>${qty}</span>
+								<button data-action="inc" data-id="${product.id}">+</button>
+							</div>
+						</div>
+					`;
+
+          item.querySelectorAll("button").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const action = btn.dataset.action;
+              if (action === "inc") {
+                addToCart(product.id);
+              } else {
+                removeFromCart(product.id);
+              }
+            });
+          });
+
+          cartListEl.appendChild(item);
+        });
+
+        totalPriceEl.textContent = formatRupiah(total);
+      };
+
+      const addToCart = (productId) => {
+        const currentQty = cart.get(productId) || 0;
+        cart.set(productId, currentQty + 1);
+        renderCart();
+      };
+
+      const removeFromCart = (productId) => {
+        const currentQty = cart.get(productId) || 0;
+        if (currentQty <= 1) {
+          cart.delete(productId);
+        } else {
+          cart.set(productId, currentQty - 1);
+        }
+        renderCart();
+      };
+
+      clearCartBtn.addEventListener("click", () => {
+        cart.clear();
+        renderCart();
+      });
+
+      renderProducts();
+      renderCart();
+    </script>
+  </body>
+</html>
