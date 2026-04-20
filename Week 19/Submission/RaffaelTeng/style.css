@@ -1,0 +1,317 @@
+/* ================================
+   STYLING UNTUK TES JAVASCRIPT DASAR
+   ================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 0;
+  padding: 40px;
+  border: 1px solid #ddd;
+}
+
+h1 {
+  color: #222;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2em;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 0.95em;
+}
+
+/* ================================
+   STYLING UNTUK SETIAP TASK
+   ================================ */
+
+.task {
+  background: #fafafa;
+  border-left: 3px solid #333;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 0;
+}
+
+.task:hover {
+  background: #f5f5f5;
+}
+
+.task h2 {
+  color: #222;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.task-description {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+}
+
+/* ================================
+   STYLING TOMBOL
+   ================================ */
+
+button {
+  background: #333;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px 20px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-family: Arial, sans-serif;
+}
+
+button:hover {
+  background: #444;
+  border-color: #555;
+}
+
+button:active {
+  background: #222;
+}
+
+/* ================================
+   TASK 1: TOMBOL PESAN
+   ================================ */
+
+#btn-hello {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1em;
+}
+
+/* ================================
+   TASK 2: COUNTER
+   ================================ */
+
+.counter-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+#btn-decrease,
+#btn-increase {
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  font-size: 1.3em;
+  border-radius: 0;
+}
+
+#counter-display {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* ================================
+   TASK 3: TOGGLE WARNA
+   ================================ */
+
+#btn-toggle-color {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.color-box {
+  width: 100%;
+  height: 150px;
+  background: #e5e5e5;
+  border-radius: 0;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+}
+
+/* ================================
+   TASK 4: VALIDASI FORM
+   ================================ */
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-size: 0.95em;
+  font-family: Arial, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.error-message {
+  display: block;
+  color: #c00;
+  font-size: 0.85em;
+  margin-top: 3px;
+  min-height: 18px;
+}
+
+#btn-submit {
+  width: 100%;
+}
+
+/* ================================
+   TASK 5: TOGGLE KONTEN
+   ================================ */
+
+#btn-toggle-content {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.hidden-content-box {
+  background: #fafafa;
+  border: 1px solid #999;
+  padding: 15px;
+  border-radius: 0;
+  max-height: 500px;
+  overflow: hidden;
+  display: none;
+}
+
+.hidden-content-box.show {
+  display: block;
+}
+
+.hidden-content-box p {
+  color: #333;
+  line-height: 1.5;
+  font-size: 0.95em;
+}
+
+.hidden-content-box p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* ================================
+   TASK 6: UBAH TEKS
+   ================================ */
+
+#dynamic-text {
+  color: #333;
+  font-size: 0.95em;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #fafafa;
+  border-radius: 0;
+  border-left: 3px solid #333;
+}
+
+#btn-change-text {
+  width: 100%;
+}
+
+/* ================================
+   TASK 7: INPUT PENGGUNA
+   ================================ */
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#user-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 0;
+  font-size: 0.95em;
+  font-family: Arial, sans-serif;
+}
+
+#user-input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+#btn-display-input {
+  padding: 8px 20px;
+}
+
+.display-area {
+  background: #fafafa;
+  border: 1px solid #999;
+  padding: 15px;
+  border-radius: 0;
+  margin-top: 15px;
+}
+
+#user-output {
+  color: #333;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .task {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .task h2 {
+    font-size: 1.1em;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  #btn-display-input {
+    width: 100%;
+  }
+}

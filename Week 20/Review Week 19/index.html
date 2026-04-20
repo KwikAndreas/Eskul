@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tes JavaScript Dasar - Hasil</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Tes JavaScript Dasar</h1>
+      <p class="subtitle">
+        Kerjakan semua tugas berikut dengan membuat JavaScript internal di file
+        ini
+      </p>
+
+      <!-- TUGAS 1: Tombol Pesan Sederhana -->
+      <section class="task">
+        <h2>Tugas 1: Tombol Pesan</h2>
+        <p class="task-description">
+          Klik tombol di bawah untuk menampilkan pesan dengan alert()
+        </p>
+        <button id="btn-hello">Klik Saya</button>
+      </section>
+
+      <!-- TUGAS 2: Counter/Penghitung -->
+      <section class="task">
+        <h2>Tugas 2: Penghitung (Counter)</h2>
+        <p class="task-description">
+          Gunakan tombol untuk menambah dan mengurangi angka
+        </p>
+        <div class="counter-box">
+          <button id="btn-decrease">-</button>
+          <span id="counter-display">0</span>
+          <button id="btn-increase">+</button>
+        </div>
+      </section>
+
+      <!-- TUGAS 3: Toggle Warna Latar -->
+      <section class="task">
+        <h2>Tugas 3: Ubah Warna Latar</h2>
+        <p class="task-description">
+          Klik tombol untuk mengubah warna latar belakang section ini
+        </p>
+        <button id="btn-toggle-color">Ubah Warna</button>
+        <div id="color-box" class="color-box"></div>
+      </section>
+
+      <!-- TUGAS 4: Validasi Form Sederhana -->
+      <section class="task">
+        <h2>Tugas 4: Validasi Form</h2>
+        <p class="task-description">
+          Isi form dan klik tombol. Tampilkan pesan error jika input kosong
+        </p>
+        <form id="form-validation">
+          <div class="form-group">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda" />
+            <span id="error-nama" class="error-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Masukkan email Anda" />
+            <span id="error-email" class="error-message"></span>
+          </div>
+          <button type="button" id="btn-submit">Kirim</button>
+        </form>
+      </section>
+
+      <!-- TUGAS 5: Toggle / Tampil-Sembunyikan -->
+      <section class="task">
+        <h2>Tugas 5: Tampil Sembunyikan Konten</h2>
+        <p class="task-description">
+          Klik tombol untuk menampilkan atau menyembunyikan konten di bawah
+        </p>
+        <button id="btn-toggle-content">Tampilkan Konten</button>
+        <div id="hidden-content" class="hidden-content-box">
+          <p>Ini adalah konten yang bisa ditampilkan dan disembunyikan!</p>
+          <p>Konten ini hanya muncul ketika tombol diklik.</p>
+        </div>
+      </section>
+
+      <!-- TUGAS 6: Ubah Teks -->
+      <section class="task">
+        <h2>Tugas 6: Ubah Teks Dinamis</h2>
+        <p class="task-description">Klik tombol untuk mengubah teks di bawah</p>
+        <p id="dynamic-text">Teks original - klik tombol untuk mengubah</p>
+        <button id="btn-change-text">Ubah Teks</button>
+      </section>
+
+      <!-- TUGAS 7: Input Pengguna -->
+      <section class="task">
+        <h2>Tugas 7: Input dan Tampilkan Teks</h2>
+        <p class="task-description">
+          Ketik teks di input, lalu tampilkan di bawah saat tombol diklik
+        </p>
+        <div class="input-group">
+          <input type="text" id="user-input" placeholder="Ketik sesuatu..." />
+          <button id="btn-display-input">Tampilkan</button>
+        </div>
+        <div id="display-area" class="display-area">
+          <p id="user-output">Teks Anda akan muncul di sini</p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      // Tugas 1: tampilkan alert saat tombol diklik
+      const helloButton = document.getElementById("btn-hello");
+      helloButton.addEventListener("click", function () {
+        alert("Halo! Tombol berhasil diklik.");
+      });
+
+      // Tugas 2: counter naik dan turun
+      let count = 0;
+      const increaseButton = document.getElementById("btn-increase");
+      const decreaseButton = document.getElementById("btn-decrease");
+      const counterDisplay = document.getElementById("counter-display");
+
+      increaseButton.addEventListener("click", function () {
+        count += 1;
+        counterDisplay.textContent = count;
+      });
+
+      decreaseButton.addEventListener("click", function () {
+        count -= 1;
+        counterDisplay.textContent = count;
+      });
+
+      // Tugas 3: ganti warna box secara bergantian
+      const colorBox = document.getElementById("color-box");
+      const toggleColorButton = document.getElementById("btn-toggle-color");
+      const colors = [
+        "#FF6B6B",
+        "#4ECDC4",
+        "#45B7D1",
+        "#FFA07A",
+        "#98D8C8",
+        "#F7DC6F",
+      ];
+      let currentColorIndex = 0;
+
+      toggleColorButton.addEventListener("click", function () {
+        colorBox.style.backgroundColor = colors[currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+      });
+
+      // Tugas 4: validasi form sederhana
+      const namaInput = document.getElementById("nama");
+      const emailInput = document.getElementById("email");
+      const namaError = document.getElementById("error-nama");
+      const emailError = document.getElementById("error-email");
+      const submitButton = document.getElementById("btn-submit");
+
+      submitButton.addEventListener("click", function () {
+        namaError.textContent = "";
+        emailError.textContent = "";
+
+        let valid = true;
+
+        if (namaInput.value.trim() === "") {
+          namaError.textContent = "Nama wajib diisi.";
+          valid = false;
+        }
+
+        if (emailInput.value.trim() === "") {
+          emailError.textContent = "Email wajib diisi.";
+          valid = false;
+        }
+
+        if (valid) {
+          alert("Form berhasil dikirim!");
+        }
+      });
+
+      // Tugas 5: tampilkan dan sembunyikan konten
+      const toggleContentButton = document.getElementById("btn-toggle-content");
+      const hiddenContent = document.getElementById("hidden-content");
+
+      toggleContentButton.addEventListener("click", function () {
+        hiddenContent.classList.toggle("show");
+
+        if (hiddenContent.classList.contains("show")) {
+          toggleContentButton.textContent = "Sembunyikan Konten";
+        } else {
+          toggleContentButton.textContent = "Tampilkan Konten";
+        }
+      });
+
+      // Tugas 6: ubah teks dinamis secara berulang
+      const changeTextButton = document.getElementById("btn-change-text");
+      const dynamicText = document.getElementById("dynamic-text");
+      const texts = [
+        "Teks original - klik tombol untuk mengubah",
+        "Teks berubah pertama!",
+        "Teks berubah kedua!",
+        "Teks berubah ketiga!",
+        "Kembali ke awal...",
+      ];
+      let textIndex = 0;
+
+      changeTextButton.addEventListener("click", function () {
+        textIndex = (textIndex + 1) % texts.length;
+        dynamicText.textContent = texts[textIndex];
+      });
+
+      // Tugas 7: tampilkan input pengguna ke area output
+      const userInput = document.getElementById("user-input");
+      const displayButton = document.getElementById("btn-display-input");
+      const userOutput = document.getElementById("user-output");
+
+      displayButton.addEventListener("click", function () {
+        const inputValue = userInput.value.trim();
+        userOutput.textContent =
+          inputValue === "" ? "Teks Anda akan muncul di sini" : inputValue;
+      });
+
+      userInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          displayButton.click();
+        }
+      });
+    </script>
+  </body>
+</html>

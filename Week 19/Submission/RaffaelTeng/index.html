@@ -105,13 +105,182 @@
     </div>
 
     <!-- MASUKKAN JAVASCRIPT INTERNAL ANDA DI BAWAH INI -->
+     
+    <button id="btn-halo">Klik Saya</button>
     <script>
       // Tulis semua JavaScript Anda di sini
       // Jangan lupa untuk menargetkan elemen dengan benar menggunakan:
       // - getElementById()
       // - querySelector()
       // - addEventListener()
-      
+      const btn = document.getElementById("btn-halo");
+btn.addEventListener("click", function () {
+  //
+    alert("halo selamat datang");
+});
     </script>
-  </body>
+
+<p>
+
+<script> 
+angka
+      let hitung  = 0;
+
+const angka = document.getElementById("btn-angka");
+const tomboltambahan = document.getElementById("btn-tambah");
+const tombolkurang = document.getElementById("btn-kurang")
+
+tomboltambahan.addEventListener("click", function () {
+  // Tambah countincreaseBtn.addEventListener("click", function () {
+  // Update counterDisplay.textContent
+hitungangka = 1
+});
+ 
+
+tombolkurang.addEventListener("click", function () {
+  // Kurangi count
+  // Update counterDisplay.textContent
+  kurangi = -1
+});
+</script>
+<p>
+   
+    
+    <BUtton>id ="btn-tonggle-color"</BUtton>
+    <div>id ="color-box" </div> 
+    <button> "array" </button>
+   <script> 
+const colorBox = document.getElementById("color-box");
+const toggleColorBtn = document.getElementById("btn-toggle-color");
+
+const colors = [
+  "#FF6B6B",
+  "#4ECDC4", 
+  "#45B7D1",
+  "#FFA07A",
+  "#98D8C8",
+  "#F7DC6F",
+];
+
+let currentColorIndex = 0;
+
+toggleColorBtn.addEventListener("click", function () {
+  // Update warna box
+  // Bisa menggunakan array colors 
+  "Array colors" = 1
+});
+</script>
+
+
+</p>
+<form id="form-validation">
+          <div class="form-group">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda" />
+            <span id="error-nama" class="error-message"></span>
+          </div>
+        <style> color red </style>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Masukkan email Anda" />
+            <span id="error-email" class="error-message"></span>
+          </div>
+          <button type="button" id="btn-submit">Kirim</button>
+        </form>
+    <script> 
+const form = document.getElementById("form-validation");
+const namaInput = document.getElementById("nama");
+const emailInput = document.getElementById("email");
+const namaError = document.getElementById("error-nama");
+const emailError = document.getElementById("error-email");
+const submitBtn = document.getElementById("btn-submit");
+
+submitBtn.addEventListener("click", function () {
+  // Reset error messages
+  namaError.textContent = "";
+  emailError.textContent = "";
+
+  let valid = true;
+
+  // Validasi nama
+  if (namaInput.value.trim() === "") {
+    // Tampilkan error
+    valid = false;
+  }
+
+  // Validasi email
+  if (emailInput.value.trim() === "") {
+    // Tampilkan error
+    valid = false;
+  }
+
+  // Jika valid
+  if (valid) {
+    // Tampilkan alert sukses
+  } alert(berhasil
+  )
+});
+
+
+
+ </script>
+
+ <p>
+
+    <button id="btn-toggle-content">Tampilkan Konten</button>
+        <div id="hidden-content" class="hidden-content-box">
+          <p>Ini adalah konten yang bisa ditampilkan dan disembunyikan!</p>
+          <p>Konten ini hanya muncul ketika tombol diklik.</p>
+        </div>
+    
+    <script>
+        
+      const toggleBtn = document.getElementById("btn-toggle-content");
+const hiddenContent = document.getElementById("hidden-content-box");
+
+toggleBtn.addEventListener("click", function () {
+  // Toggle class 'show' pada hidden-content
+  // Atau gunakan hiddenContent.style.display
+
+  (show).hiddenContent.toggle 
+
+  // Ubah text tombol
+  if (hiddenContent.classList.contains("show")) {
+    toggleBtn.textContent = "Sembunyikan Konten";
+  } else {
+    toggleBtn.textContent = "Tampilkan Konten";
+  }
+});
+
+</script>
+ 
+<p>
+
+   <button id="btn-change-text">Ubah Teks</button> 
+   <h1> id ="dynamic-text" > kata original
+ </h1>
+<script>
+    
+ const changeTextBtn = document.getElementById("btn-change-text");
+const dynamicText = document.getElementById("dynamic-text");
+
+const texts = [
+  "Teks original - klik tombol untuk mengubah",
+  "Teks berubah pertama!",
+  "Teks berubah kedua!",
+  "Teks berubah ketiga!",
+  "Kembali ke awal...",
+];
+
+let textIndex = 1;
+
+
+changeTextBtn.addEventListener("click", function () {
+  // Update textIndex
+  // Jika sudah sampai akhir array, reset ke 0
+  // Update dynamic-text content
+});
+```
+ </script>
+<body
 </html>

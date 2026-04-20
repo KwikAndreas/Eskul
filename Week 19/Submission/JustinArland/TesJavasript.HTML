@@ -106,12 +106,129 @@
 
     <!-- MASUKKAN JAVASCRIPT INTERNAL ANDA DI BAWAH INI -->
     <script>
-      // Tulis semua JavaScript Anda di sini
-      // Jangan lupa untuk menargetkan elemen dengan benar menggunakan:
-      // - getElementById()
-      // - querySelector()
-      // - addEventListener()
+        const btn =        document.getElementById("btn-hello");
+btn.addEventListener("click", function () {
+  alert("Halo Guys Nama Ku Justin Arland")
+});
+
+let nilai = 0;
+
+
+const increaseBtn = document.getElementById("btn-increase");
+const decreaseBtn = document.getElementById("btn-decrease");
+const counterDisplay = document.getElementById("counter-display");
+
+
+increaseBtn.addEventListener("click", function () {
+  nilai = nilai+ 1;
+document.getElementById("counter-display").textContent = nilai;
+ });
+
+
+decreaseBtn.addEventListener("click", function () {
+  nilai = nilai - 1;
+document.getElementById("counter-display").textContent = nilai;
+});
+
+const btntogglecolor = document.getElementById("btn-toggle-color")
+const colorBox = document.getElementById("color-box")
+
+const color = [
+    "#0000FF", 
+    "#FF0000", 
+    "#FFFF00", 
+    "#A52A2A", 
+    "#000000", 
+];
+
+let warna = 0;
+
+btntogglecolor.addEventListener("click", function () {
+  warna = (warna + 1) % color.length;
+colorBox.style.backgroundColor = color[warna];
+  
+  });
+    
+const form = document.getElementById("form-validation");
+const namaInput = document.getElementById("nama");
+const emailInput = document.getElementById("email");
+const namaError = document.getElementById("error-nama");
+const emailError = document.getElementById("error-email");
+const submitBtn = document.getElementById("btn-submit");
+
+submitBtn.addEventListener("click", function () {
+  // Reset error messages
+  namaError.textContent = "";
+  emailError.textContent = "";
+
+  let valid = true;
+
+  // Validasi nama
+  if (namaInput.value.trim() === "") {
+document.getElementById("error-nama").textContent ="error";
+       valid = false;
       
+  }
+
+  // Validasi email
+  if (emailInput.value.trim() === "") {
+    document.getElementById("error-email").textContent ="error";
+    valid = false;
+  }
+
+  // Jika valid
+  if (valid) {
+  alert("Selamat Anda Sukses!")
+  }
+});
+
+const togglebtn = document.getElementById("btn-toggle-content")
+const hiddencontent = document.getElementById("hidden-content")
+
+togglebtn.addEventListener("click", function () {
+hiddencontent.style.display = "none"
+});
+
+if (hiddencontent.style.display === "none" || hiddencontent.style.display === ""){
+hiddencontent.style.display = "block";
+    togglebtn.textContent ="Sembunyikan Konten"
+}
+else {
+hiddencontent.style.display = "none";
+    togglebtn.textContent ="Tampilkan Konten"
+}
+
+const changetextbtn = document.getElementById("btn-change-text")
+const dynamictext = document.getElementById("dynamic-text")
+
+const Texts = [
+    
+  "Teks original - klik tombol untuk mengubah",
+  "Teks berubah pertama!",
+  "Teks berubah kedua!",
+  "Teks berubah ketiga!",
+  "Kembali ke awal...",
+];
+
+let textIndex = 0
+  
+changetextbtn.addEventListener("click", function () {
+ textIndex++;
+ if (textIndex >= Texts.length) {
+    textIndex = 0;
+}
+ dynamictext.textContent=Texts[textIndex]
+});
+
+const userInput = document.getElementById("user-input");
+const displayBtn = document.getElementById("btn-display-input");
+const userOutput = document.getElementById("user-output");
+
+displayBtn.addEventListener("click", function () {
+ let nama = document.getElementById("user-input").value;
+document.getElementById("user-output").textContent = nama
+});
+
     </script>
   </body>
 </html>

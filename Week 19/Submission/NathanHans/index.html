@@ -111,7 +111,78 @@
       // - getElementById()
       // - querySelector()
       // - addEventListener()
-      
+      // Targetkan tombol dengan ID "btn-hello"
+// Gunakan addEventListener untuk mendengarkan event "click"
+// Gunakan alert() untuk menampilkan pesan
+    let count = 0;
+          let currentColorIndex = 0;
+        const btn = document.getElementById("btn-hello");
+        btn.addEventListener("click", function () { 
+            alert("nommor satu selesai")
+  // Tulis kode Anda di sini
+        });
+    
+// Targetkan elemen yang diperlukan
+   const increaseBtn = document.getElementById("btn-increase");
+   const decreaseBtn = document.getElementById("btn-decrease");
+   const counterDisplay = document.getElementById("counter-display");
+
+// Tambahkan event listener untuk tombol +
+    increaseBtn.addEventListener("click", function () {
+          count = count + 1;
+          counterDisplay.textContent = count;
+    });
+   decreaseBtn.addEventListener("click", function () {
+          count = count - 1;
+          counterDisplay.textContent = count;
+    });
+     
+ const colorBox = document.getElementById("color-box");
+     const toggleColorBtn = document.getElementById("btn-toggle-color");   
+     const colors = [
+       "#FF6B6B",
+       "#4ECDC4",
+       "#45B7D1",
+        "#FFA07A",
+        "#98D8C8",
+        "#F7DC6F",
+        ];
+
+toggleColorBtn.addEventListener("click", function () {
+  currentColorIndex =(currentColorIndex + 1) %color.length;
+  colorBox.style.backgroundColor=colors[currentColorIndex];
+});
+
+
+const userInput = document.getElementById("user-input");
+const displayBtn = document.getElementById("btn-display-input");
+const userOutput = document.getElementById("user-output");
+
+displayBtn.addEventListener("click", function () {
+  // Ambil value dari userInput
+  // Tampilkan di userOutput menggunakan textContent
+  userInput.value= userInput.value.toLowerCase();
+   userOutput.textContent =userInput.value;
+});      
+const toggleBtn = document.getElementById("btn-toggle-content");
+const hiddenContent = document.getElementById("hidden-content-box");
+
+toggleBtn.addEventListener("click", function () {
+  // Toggle class 'show' pada hidden-content
+  // Atau gunakan hiddenContent.style.display
+  hiddenContent.classList.toggle("show");
+
+  // Ubah text tombol
+  if (hiddenContent.classList.contains("show")) {
+    toggleBtn.textContent = "Sembunyikan Konten";
+  } else {
+    toggleBtn.textContent = "Tampilkan Konten";
+  }
+});
+
+
+
+
     </script>
   </body>
 </html>
