@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 20: JavaScript Challenge - Perbaikan Nilai</title>
+    <style>
+      /* ================================
+         STYLING UNTUK WEEK 20 CHALLENGE
+         ================================ */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 0;
+        padding: 40px;
+        border: 1px solid #ddd;
+      }
+
+      h1 {
+        color: #222;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 2em;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 40px;
+        font-size: 0.95em;
+      }
+
+      .info-box {
+        background: #fafafa;
+        border-left: 3px solid #333;
+        padding: 15px;
+        margin-bottom: 30px;
+        border: 1px solid #999;
+      }
+
+      /* ================================
+         STYLING UNTUK SETIAP TASK
+         ================================ */
+
+      .task {
+        background: #fafafa;
+        border-left: 3px solid #333;
+        padding: 20px;
+        margin-bottom: 25px;
+        border-radius: 0;
+      }
+
+      .task:hover {
+        background: #f5f5f5;
+      }
+
+      .task h2 {
+        color: #222;
+        margin-bottom: 8px;
+        font-size: 1.2em;
+      }
+
+      .task-description {
+        color: #666;
+        margin-bottom: 15px;
+        font-size: 0.9em;
+      }
+
+      /* ================================
+         STYLING TOMBOL
+         ================================ */
+
+      button {
+        background: #333;
+        color: white;
+        border: 1px solid #444;
+        padding: 10px 20px;
+        border-radius: 0;
+        cursor: pointer;
+        font-size: 0.95em;
+        font-family: Arial, sans-serif;
+        margin-right: 5px;
+        margin-bottom: 10px;
+      }
+
+      button:hover {
+        background: #444;
+        border-color: #555;
+      }
+
+      button:active {
+        background: #222;
+      }
+
+      /* ================================
+         INPUT FIELDS
+         ================================ */
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="range"],
+      input[type="color"],
+      select,
+      textarea {
+        padding: 8px;
+        border: 1px solid #999;
+        border-radius: 0;
+        font-family: Arial, sans-serif;
+        font-size: 0.95em;
+        margin: 5px 0;
+        width: 100%;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="password"]:focus,
+      input[type="number"]:focus,
+      input[type="color"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #333;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        padding: 0;
+        margin: 10px 0;
+      }
+
+      /* ================================
+         FORM ELEMENTS
+         ================================ */
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .error-message {
+        display: block;
+        color: #c00;
+        font-size: 0.85em;
+        margin-top: 3px;
+        min-height: 18px;
+      }
+
+      .success-message {
+        display: block;
+        color: #0a0;
+        font-size: 0.85em;
+        margin-top: 3px;
+        min-height: 18px;
+      }
+
+      /* ================================
+         KALKULATOR
+         ================================ */
+
+      .calculator-display {
+        background: #333;
+        color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        text-align: right;
+        font-size: 1.5em;
+        font-family: "Courier New", monospace;
+        min-height: 40px;
+        border: 1px solid #444;
+      }
+
+      .calculator-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      .calculator-buttons button {
+        padding: 15px;
+        margin: 0;
+        width: 100%;
+      }
+
+      /* ================================
+         TO-DO LIST
+         ================================ */
+
+      .list-item {
+        background: white;
+        padding: 10px;
+        margin: 5px 0;
+        border-left: 3px solid #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #999;
+        border-left: 3px solid #333;
+      }
+
+      .list-item button {
+        padding: 5px 10px;
+        font-size: 0.8em;
+        margin: 0;
+      }
+
+      .list-item.completed {
+        opacity: 0.6;
+        text-decoration: line-through;
+      }
+
+      /* ================================
+         SEARCH
+         ================================ */
+
+      .search-result {
+        background: white;
+        padding: 10px;
+        margin: 5px 0;
+        border-left: 3px solid #333;
+        border: 1px solid #999;
+        border-left: 3px solid #333;
+      }
+
+      /* ================================
+         ACCORDION
+         ================================ */
+
+      .accordion-item {
+        border: 1px solid #999;
+        margin-bottom: 5px;
+        border-radius: 0;
+      }
+
+      .accordion-header {
+        background: #fafafa;
+        padding: 12px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+        border-bottom: 1px solid #999;
+      }
+
+      .accordion-header:hover {
+        background: #f0f0f0;
+      }
+
+      .accordion-content {
+        display: none;
+        padding: 15px;
+        background: white;
+        color: #333;
+        font-size: 0.95em;
+        line-height: 1.5;
+      }
+
+      .accordion-content.show {
+        display: block;
+      }
+
+      /* ================================
+         HIDDEN CONTENT
+         ================================ */
+
+      .hidden-content {
+        display: none;
+        background: #fafafa;
+        padding: 15px;
+        border: 1px solid #999;
+        margin-top: 10px;
+      }
+
+      .hidden-content.show {
+        display: block;
+      }
+
+      .hidden-content p {
+        color: #333;
+        line-height: 1.5;
+        font-size: 0.95em;
+      }
+
+      .hidden-content p:not(:last-child) {
+        margin-bottom: 10px;
+      }
+
+      /* ================================
+         OUTPUT BOXES
+         ================================ */
+
+      .output-box {
+        background: #fafafa;
+        border: 1px solid #999;
+        padding: 15px;
+        margin-top: 10px;
+        min-height: 50px;
+        word-wrap: break-word;
+        color: #333;
+        font-size: 0.95em;
+      }
+
+      /* ================================
+         COUNTER & TIMER
+         ================================ */
+
+      .timer-display {
+        font-size: 2em;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+        background: #fafafa;
+        margin: 10px 0;
+        font-family: "Courier New", monospace;
+        border: 1px solid #999;
+      }
+
+      .char-counter {
+        text-align: right;
+        font-size: 0.85em;
+        color: #666;
+        margin-top: 3px;
+      }
+
+      /* ================================
+         COLOR BOX
+         ================================ */
+
+      .color-box {
+        width: 100%;
+        height: 150px;
+        background: #e5e5e5;
+        border-radius: 0;
+        margin: 15px 0;
+        border: 1px solid #ccc;
+        transition: background 0.3s;
+      }
+
+      /* ================================
+         QUOTE BOX
+         ================================ */
+
+      .quote-box {
+        background: #fafafa;
+        padding: 20px;
+        border-left: 3px solid #333;
+        margin: 15px 0;
+        border: 1px solid #999;
+        border-left: 3px solid #333;
+        font-style: italic;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .quote-author {
+        text-align: right;
+        color: #666;
+        margin-top: 10px;
+        font-style: normal;
+      }
+
+      /* ================================
+         PROGRESS BAR
+         ================================ */
+
+      .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: #e0e0e0;
+        border: 1px solid #999;
+        overflow: hidden;
+        margin: 10px 0;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: #333;
+        width: 0%;
+        transition: width 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+
+      /* ================================
+         MODAL
+         ================================ */
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .modal.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 0;
+        max-width: 500px;
+        width: 90%;
+        border: 1px solid #333;
+        position: relative;
+      }
+
+      .modal-content h3 {
+        color: #222;
+        margin-bottom: 15px;
+      }
+
+      .modal-content p {
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .modal-close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .modal-close:hover {
+        color: #000;
+      }
+
+      /* ================================
+         TEXTAREA
+         ================================ */
+
+      textarea {
+        width: 100%;
+        min-height: 80px;
+        resize: vertical;
+      }
+
+      /* ================================
+         INPUT GROUP
+         ================================ */
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .input-group input {
+        flex: 1;
+        margin: 0;
+      }
+
+      .input-group button {
+        margin: 0;
+        width: auto;
+      }
+
+      /* ================================
+         DARK MODE
+         ================================ */
+
+      body.dark-mode {
+        background: #222;
+      }
+
+      body.dark-mode .container {
+        background: #333;
+        color: #ddd;
+        border-color: #444;
+      }
+
+      body.dark-mode .task {
+        background: #2a2a2a;
+        border-left-color: #666;
+      }
+
+      body.dark-mode .task:hover {
+        background: #333;
+      }
+
+      body.dark-mode h1,
+      body.dark-mode h2 {
+        color: #ddd;
+      }
+
+      body.dark-mode .task-description,
+      body.dark-mode p {
+        color: #aaa;
+      }
+
+      body.dark-mode input,
+      body.dark-mode select,
+      body.dark-mode textarea {
+        background: #444;
+        color: #ddd;
+        border-color: #555;
+      }
+
+      body.dark-mode input:focus,
+      body.dark-mode select:focus,
+      body.dark-mode textarea:focus {
+        border-color: #666;
+      }
+
+      body.dark-mode .output-box,
+      body.dark-mode .hidden-content {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #ddd;
+      }
+
+      body.dark-mode .accordion-header {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #ddd;
+      }
+
+      body.dark-mode .accordion-header:hover {
+        background: #333;
+      }
+
+      body.dark-mode .list-item {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #ddd;
+      }
+
+      body.dark-mode .calculator-display {
+        background: #111;
+        color: #ddd;
+        border-color: #555;
+      }
+
+      body.dark-mode .info-box {
+        background: #2a2a2a;
+        border-color: #666;
+        color: #ddd;
+      }
+
+      body.dark-mode .quote-box,
+      body.dark-mode .search-result {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #ddd;
+      }
+
+      body.dark-mode .timer-display {
+        background: #2a2a2a;
+        color: #ddd;
+        border-color: #555;
+      }
+
+      body.dark-mode .progress-bar {
+        background: #444;
+        border-color: #555;
+      }
+
+      body.dark-mode .color-box {
+        border-color: #555;
+      }
+
+      body.dark-mode .modal-content {
+        background: #333;
+        border-color: #555;
+        color: #ddd;
+      }
+
+      body.dark-mode .modal-close {
+        color: #aaa;
+      }
+
+      /* ================================
+         RESPONSIVE DESIGN
+         ================================ */
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 1.5em;
+        }
+
+        .calculator-buttons {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .input-group {
+          flex-direction: column;
+        }
+
+        .input-group input,
+        .input-group button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Week 20: JavaScript Challenge - Perbaikan Nilai</h1>
+      <p class="subtitle">
+        15 Soal untuk meningkatkan kemampuan JavaScript Anda
+      </p>
+
+      <div class="info-box">
+        <strong>Petunjuk:</strong> Kerjakan semua 15 tugas di bawah. Edit bagian
+        <code>&lt;script&gt;</code> saja, jangan ubah HTML atau CSS. Instruksi
+        singkat untuk challenge ini lebih ringan - gunakan pengetahuan dari Week
+        19 untuk menganalisis apa yang diperlukan!
+      </div>
+
+      <!-- TUGAS 1: Simple Calculator -->
+      <section class="task">
+        <h2>Tugas 1: Kalkulator Sederhana</h2>
+        <p class="task-description">
+          Buat kalkulator dengan operasi +, -, *, /
+        </p>
+        <div class="calculator-display" id="calc-display">0</div>
+        <div class="calculator-buttons">
+          <button data-num="7">7</button>
+          <button data-num="8">8</button>
+          <button data-num="9">9</button>
+          <button data-op="/">/</button>
+          <button data-num="4">4</button>
+          <button data-num="5">5</button>
+          <button data-num="6">6</button>
+          <button data-op="*">*</button>
+          <button data-num="1">1</button>
+          <button data-num="2">2</button>
+          <button data-num="3">3</button>
+          <button data-op="-">-</button>
+          <button data-num="0">0</button>
+          <button data-dot=".">..</button>
+          <button data-equal="=">=</button>
+          <button data-op="+">+</button>
+        </div>
+        <button id="calc-clear">Clear</button>
+      </section>
+
+      <!-- TUGAS 2: To-Do List -->
+      <section class="task">
+        <h2>Tugas 2: To-Do List dengan Add/Delete</h2>
+        <p class="task-description">Tambah, tampilkan, dan hapus to-do items</p>
+        <div class="form-group">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="Tambah tugas baru..."
+          />
+          <button id="todo-add">Tambah</button>
+        </div>
+        <div id="todo-list"></div>
+      </section>
+
+      <!-- TUGAS 3: Search & Filter -->
+      <section class="task">
+        <h2>Tugas 3: Search & Filter Data</h2>
+        <p class="task-description">
+          Filter data dari array berdasarkan input search
+        </p>
+        <div class="form-group">
+          <input type="text" id="search-input" placeholder="Cari produk..." />
+        </div>
+        <div id="search-results"></div>
+      </section>
+
+      <!-- TUGAS 4: Accordion Menu -->
+      <section class="task">
+        <h2>Tugas 4: Accordion Menu</h2>
+        <p class="task-description">
+          Toggle buka/tutup multiple items, hanya satu yang buka
+        </p>
+        <div id="accordion-container"></div>
+      </section>
+
+      <!-- TUGAS 5: Counter dengan Step -->
+      <section class="task">
+        <h2>Tugas 5: Counter dengan Custom Step</h2>
+        <p class="task-description">
+          Counter dengan kemampuan set increment step
+        </p>
+        <div class="form-group">
+          <label>Step Value:</label>
+          <input type="number" id="step-input" value="1" min="1" />
+        </div>
+        <div style="text-align: center">
+          <button id="step-minus">Kurangi</button>
+          <span
+            style="
+              display: inline-block;
+              margin: 0 20px;
+              font-size: 1.5em;
+              font-weight: bold;
+              color: #667eea;
+            "
+            id="step-counter"
+            >0</span
+          >
+          <button id="step-plus">Tambah</button>
+        </div>
+        <div style="text-align: center; margin-top: 10px">
+          <button id="step-reset" style="background: #ff6b6b">Reset</button>
+        </div>
+      </section>
+
+      <!-- TUGAS 6: Form Validasi Advanced -->
+      <section class="task">
+        <h2>Tugas 6: Form Validasi (Email, Username, Password)</h2>
+        <p class="task-description">
+          Validasi form dengan pattern matching real-time
+        </p>
+        <form id="advanced-form">
+          <div class="form-group">
+            <label for="username">Username (min 5 char):</label>
+            <input type="text" id="username" placeholder="Username" />
+            <span id="username-error" class="error-message"></span>
+            <span id="username-valid" class="success-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="email-input">Email:</label>
+            <input
+              type="email"
+              id="email-input"
+              placeholder="email@example.com"
+            />
+            <span id="email-error" class="error-message"></span>
+            <span id="email-valid" class="success-message"></span>
+          </div>
+          <div class="form-group">
+            <label for="password"
+              >Password (min 8 char, 1 angka, 1 huruf besar):</label
+            >
+            <input type="password" id="password" placeholder="Password" />
+            <span id="password-error" class="error-message"></span>
+            <span id="password-valid" class="success-message"></span>
+          </div>
+          <button type="button" id="form-submit-btn">Register</button>
+          <span id="form-result" class="success-message"></span>
+        </form>
+      </section>
+
+      <!-- TUGAS 7: Random Quote Generator -->
+      <section class="task">
+        <h2>Tugas 7: Random Quote Generator</h2>
+        <p class="task-description">
+          Generate random quote dan tampilkan dengan random color
+        </p>
+        <div class="quote-box" id="quote-box">
+          <p id="quote-text">Klik tombol untuk mendapatkan quote...</p>
+          <p class="quote-author" id="quote-author">- Author</p>
+        </div>
+        <button id="quote-btn">Generate Quote</button>
+        <button id="quote-share" style="background: #4caf50">Share</button>
+      </section>
+
+      <!-- TUGAS 8: Countdown Timer -->
+      <section class="task">
+        <h2>Tugas 8: Countdown Timer</h2>
+        <p class="task-description">
+          Timer dengan input menit, mulai countdown
+        </p>
+        <div class="form-group">
+          <label for="timer-input">Menit:</label>
+          <input type="number" id="timer-input" value="1" min="0" max="60" />
+        </div>
+        <div class="timer-display" id="timer-display">01:00</div>
+        <button id="timer-start">Start</button>
+        <button id="timer-pause">Pause</button>
+        <button id="timer-reset" style="background: #ff6b6b">Reset</button>
+      </section>
+
+      <!-- TUGAS 9: Character Counter -->
+      <section class="task">
+        <h2>Tugas 9: Real-time Character Counter</h2>
+        <p class="task-description">
+          Hitung jumlah karakter dengan progress bar (max 100 char)
+        </p>
+        <textarea id="char-textarea" placeholder="Ketik sesuatu..."></textarea>
+        <div class="char-counter"><span id="char-count">0</span> / 100</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="char-progress" style="width: 0%">
+            0%
+          </div>
+        </div>
+      </section>
+
+      <!-- TUGAS 10: Color Picker & Preview -->
+      <section class="task">
+        <h2>Tugas 10: Color Picker dengan Preview & RGB Info</h2>
+        <p class="task-description">
+          Pilih warna, tampilkan preview dan info RGB/HEX
+        </p>
+        <input type="color" id="color-picker" value="#667eea" />
+        <div class="color-box" id="color-preview"></div>
+        <div class="output-box" id="color-info"></div>
+      </section>
+
+      <!-- TUGAS 11: Image Filter dengan Slider -->
+      <section class="task">
+        <h2>Tugas 11: Image Brightness Control</h2>
+        <p class="task-description">
+          Kontrol brightness dan grayscale dengan slider
+        </p>
+        <div class="form-group">
+          <label>Brightness: <span id="brightness-value">100</span>%</label>
+          <input
+            type="range"
+            id="brightness-slider"
+            min="0"
+            max="200"
+            value="100"
+          />
+        </div>
+        <div class="form-group">
+          <label>Grayscale: <span id="grayscale-value">0</span>%</label>
+          <input
+            type="range"
+            id="grayscale-slider"
+            min="0"
+            max="100"
+            value="0"
+          />
+        </div>
+        <img
+          src="https://via.placeholder.com/300x200"
+          alt="Preview"
+          id="filter-image"
+          style="border-radius: 4px; margin-top: 10px; max-width: 100%"
+        />
+      </section>
+
+      <!-- TUGAS 12: Toggle Dark Mode -->
+      <section class="task">
+        <h2>Tugas 12: Dark Mode Toggle dengan LocalStorage</h2>
+        <p class="task-description">
+          Toggle dark mode dan save preference ke localStorage
+        </p>
+        <button id="dark-mode-toggle">🌙 Aktifkan Dark Mode</button>
+        <p id="dark-mode-status">Mode: Light</p>
+      </section>
+
+      <!-- TUGAS 13: Modal Popup -->
+      <section class="task">
+        <h2>Tugas 13: Modal Popup dengan Close</h2>
+        <p class="task-description">
+          Buka modal dan tutup dengan berbagai cara
+        </p>
+        <button id="modal-open">Buka Modal</button>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h3>Modal Content</h3>
+            <p>
+              Ini adalah modal popup. Klik X untuk menutup atau klik di luar
+              modal.
+            </p>
+            <button id="modal-close-btn">Close Modal</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TUGAS 14: Element Sorting -->
+      <section class="task">
+        <h2>Tugas 14: Sort List of Numbers</h2>
+        <p class="task-description">
+          Input angka dan sort ascending/descending
+        </p>
+        <div class="form-group">
+          <input
+            type="text"
+            id="numbers-input"
+            placeholder="Input angka dipisah koma (1,5,3,2)"
+          />
+          <button id="sort-asc">Sort Ascending</button>
+          <button id="sort-desc">Sort Descending</button>
+        </div>
+        <div class="output-box" id="numbers-output"></div>
+      </section>
+
+      <!-- TUGAS 15: FAQ Toggle -->
+      <section class="task">
+        <h2>Tugas 15: FAQ Accordion</h2>
+        <p class="task-description">
+          Toggle pertanyaan, tutup otomatis saat buka yang lain
+        </p>
+        <div id="faq-container"></div>
+      </section>
+    </div>
+
+    <script>
+      // ========================
+      // TUGAS 1: Simple Calculator
+      // ========================
+      // Tulis kode di sini
+      // Hint: Track current value, operator, dan result
+      // Gunakan data-num, data-op, data-dot, data-equal dari button
+
+      // ========================
+      // TUGAS 2: To-Do List
+      // ========================
+      // Tulis kode di sini
+      // Hint: Array untuk store items, addEventListener untuk button tambah
+      // Buat function untuk render list
+
+      // ========================
+      // TUGAS 3: Search & Filter
+      // ========================
+      // Tulis kode di sini
+      // Data: ['Laptop', 'Mouse', 'Keyboard', 'Monitor', 'Headset', 'Webcam']
+      // Filter saat user ketik di search-input
+
+      // ========================
+      // TUGAS 4: Accordion Menu
+      // ========================
+      // Tulis kode di sini
+      // Hint: Buat 4 accordion items, hanya satu yang buka sekaligus
+      // Gunakan classList.toggle() atau remove/add
+
+      // ========================
+      // TUGAS 5: Counter dengan Step
+      // ========================
+      // Tulis kode di sini
+      // Hint: Baca nilai dari step-input, tambah/kurangi counter sesuai step
+
+      // ========================
+      // TUGAS 6: Form Validasi
+      // ========================
+      // Tulis kode di sini
+      // Username: min 5 karakter
+      // Email: format valid
+      // Password: min 8 char, 1 angka, 1 huruf besar
+
+      // ========================
+      // TUGAS 7: Random Quote Generator
+      // ========================
+      // Tulis kode di sini
+      // Data quotes yang bisa di-copy paste:
+      // [
+      //   {text: "Belajar adalah investasi terbaik", author: "Benjamin Franklin"},
+      //   {text: "Kesuksesan dimulai dari kegagalan", author: "Thomas Edison"},
+      //   {text: "Jangan takut gagal, takut tidak mencoba", author: "Jack Ma"}
+      // ]
+
+      // ========================
+      // TUGAS 8: Countdown Timer
+      // ========================
+      // Tulis kode di sini
+      // Hint: Gunakan setInterval, update display setiap detik
+      // Format HH:MM
+
+      // ========================
+      // TUGAS 9: Character Counter
+      // ========================
+      // Tulis kode di sini
+      // Hint: Update saat user ketik, hitung panjang text
+      // Update progress bar width % dari total
+
+      // ========================
+      // TUGAS 10: Color Picker
+      // ========================
+      // Tulis kode di sini
+      // Hint: addEventListener pada color-picker, update preview
+      // Convert HEX ke RGB (optional advanced)
+
+      // ========================
+      // TUGAS 11: Image Filter
+      // ========================
+      // Tulis kode di sini
+      // Hint: Gunakan filter CSS - brightness() dan grayscale()
+      // Update saat slider di-drag
+
+      // ========================
+      // TUGAS 12: Dark Mode
+      // ========================
+      // Tulis kode di sini
+      // Hint: Toggle class 'dark-mode' pada body
+      // Save ke localStorage
+
+      // ========================
+      // TUGAS 13: Modal Popup
+      // ========================
+      // Tulis kode di sini
+      // Hint: Toggle class 'show' untuk modal
+      // Close saat klik X, close button, atau klik di luar
+
+      // ========================
+      // TUGAS 14: Sort Numbers
+      // ========================
+      // Tulis kode di sini
+      // Hint: Split string by koma, convert ke number, sort
+
+      // ========================
+      // TUGAS 15: FAQ Accordion
+      // ========================
+      // Tulis kode di sini
+      // FAQ Data bisa copy-paste:
+      // [
+      //   {q: "Apa itu JavaScript?", a: "JavaScript adalah bahasa pemrograman untuk web"},
+      //   {q: "Apa itu DOM?", a: "DOM adalah struktur data dari HTML"},
+      //   {q: "Apa itu Event?", a: "Event adalah interaksi user dengan halaman"},
+      //   {q: "Bagaimana cara submit form?", a: "Gunakan addEventListener dan preventDefault"}
+      // ]
+    </script>
+  </body>
+</html>
