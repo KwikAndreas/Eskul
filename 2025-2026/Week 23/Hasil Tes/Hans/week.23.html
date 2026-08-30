@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Tugas Week 23 - JavaScript</title>
+ <style>
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ body {
+ font-family: "Arial", sans-serif;
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ min-height: 100vh;
+ padding: 20px;
+ }
+ .container {
+ max-width: 1000px;
+ margin: 0 auto;
+ background: white;
+ border-radius: 10px;
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+ padding: 30px;
+ }
+ .header {
+ text-align: center;
+Week23.md 2026-05-02
+1 / 10
+ margin-bottom: 30px;
+ border-bottom: 3px solid #667eea;
+ padding-bottom: 20px;
+ }
+ .header h1 {
+ color: #333;
+ font-size: 28px;
+ margin-bottom: 5px;
+ }
+ .header p {
+ color: #666;
+ font-size: 14px;
+ }
+ .task-section {
+ margin-bottom: 30px;
+ padding: 20px;
+ border: 1px solid #ddd;
+ border-radius: 8px;
+ background: #f9f9f9;
+ }
+ .task-section h3 {
+ color: #667eea;
+ margin-bottom: 15px;
+ font-size: 18px;
+ }
+ input,
+ button,
+ select,
+ textarea {
+ padding: 10px;
+ margin: 5px 5px 5px 0;
+ border: 1px solid #ddd;
+ border-radius: 5px;
+ font-size: 14px;
+ }
+ input:focus,
+ button:focus,
+ textarea:focus {
+ outline: none;
+ border-color: #667eea;
+ box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+ }
+ button {
+ background-color: #667eea;
+ color: white;
+ cursor: pointer;
+ border: none;
+Week23.md 2026-05-02
+2 / 10
+ transition: background 0.3s;
+ }
+ button:hover {
+ background-color: #764ba2;
+ }
+ .output {
+ margin-top: 10px;
+ padding: 10px;
+ background: white;
+ border-left: 4px solid #667eea;
+ border-radius: 3px;
+ font-size: 14px;
+ color: #333;
+ }
+ .list-item {
+ padding: 8px 12px;
+ background: #f0f0f0;
+ margin: 5px 0;
+ border-radius: 5px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+ .list-item button {
+ padding: 5px 10px;
+ margin: 0;
+ font-size: 12px;
+ }
+ .footer {
+ text-align: center;
+ margin-top: 30px;
+ padding-top: 20px;
+ border-top: 1px solid #ddd;
+ color: #666;
+ font-size: 12px;
+ }
+ </style>
+ </head>
+ <body>
+ <div class="container">
+ <div class="header">
+ <h1>Tugas JavaScript Week 23</h1>
+ <p>
+ Nama: <span id="namaHeader">-</span> | Kelas:
+ <span id="kelasHeader">-</span>
+ </p>
+ </div>
+ <!-- Nomor 1 -->
+Week23.md 2026-05-02
+3 / 10
+ <div class="task-section" id="nomor1">
+ <h3>Nomor 1 - Variabel</h3>
+    <input type="text">
+ </div>
+ <div class="task-section">
+    <H3>Nomor 2 - Kalkulator Sederhana</H3>
+    <input type="text">
+    <input type="text">
+ </div>
+ <div class="task-section">
+    <H3>Nomor 3 - Cek Nilai Rapor</H3>
+    <input id="3">
+    <output id="3a"></output>
+ </div>
+ <div class="task-section">
+    <H3>Nomor 4 - Manipulasi Teks</H3>
+    <button class="color">teks</button>
+ </div>
+ <div class="task-section" id="nomor1">
+ <h3>Nomor 5 - Array Daftar Barang</h3>
+ <button>add</button>
+
+ </div>
+ <div class="task-section">
+    <H3>Nomor 6 - Loop Menampilkan Angka</H3>
+    <H3>0</H3>
+ </div>
+ <div class="task-section">
+    <H3>Nomor 7 - Ubah Angka Dengan Map</H3>
+    <input type="text">
+    
+ </div>
+  <div class="task-section" id="nomor1">
+ <h3>Nomor 8 - Profil Diri</h3>
+ <input type="text">
+ <input type="text">
+ <input type="text">
+
+ </div>
+ <div class="task-section">
+    <H3>Nomor 9 - Function Hitung Luas</H3>
+    <input type="text">
+    <input type="text">
+ </div>
+ <div class="task-section">
+    <H3>Nomor 10 - Tombol Ubah Warna</H3>
+    <button>warna</button>
+ 
+ </div>
+ <div class="task-section">
+    <H3>Nomor 11 - Form Validasi</H3>
+    <input type="text">
+ </div>
+ <div class="task-section" id="nomor1">
+ <h3>Nomor 12 - Todo List Sederhana</h3>
+ <input type="text">
+ </div>
+ <div class="task-section">
+    <H3>Nomor 13 - Loop For...Of</H3>
+ </div>
+ <div class="task-section">
+    <H3>Nomor 14 - Do-While Loop</H3>
+ </div>
+ <div class="task-section">
+    <H3>Nomor 15 - setTimeout & classList Toggle</H3>
+ </div>
+
+ <div class="footer">
+ <p>Semoga sukses! Jangan lupa test setiap nomor. 💪</p>
+ <p>"nathan:gakbisa:("</p>
+ </div>
+ </div>
+ <script>
+    let nilai = parseInt("inputNilai.value");
+    let wa 
+  const  document.getElementById.style.backgroundColor = "blue"
+  const documennuddjkgdcjfdjjbrfbf
+
+    
+ // Letakkan semua JavaScript di sin
+ // Mulai dari nomor 1, 2, 3, ... sampai 15
+ </script>
+ </body>
+</html>
